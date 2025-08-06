@@ -7,8 +7,10 @@ def home (request):
 def login(request):
     return render(request,'catalog/login.html')
 def cadastro(request):
-   if request.method != 'POST':
-        form = CadastroForm()
-
-        context = {'form': form}
-        return render(request, 'catalogo/cadastro.html', context)
+    if request.method != 'POST':
+        form = CadastroForm()          
+    else:
+        form=CadastroForm
+        
+    context = {'form': form}
+    return render(request, 'catalogo/cadastro.html', context)
