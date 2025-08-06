@@ -13,4 +13,3 @@ class Perfil(models.Model):
     
     def __str__(self):
         return f'Perfil de {self.user.username}. Seu tipo é {self.tipo_usuario}.'
-# Create your models here.
