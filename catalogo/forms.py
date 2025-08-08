@@ -1,9 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
-from models import Perfil, TIPOS_USUARIO, Filme
+from .models import Perfil, TIPOS_USUARIO, Filme
 
 
-class CadastroForm(forms. ModelForms):
+class CadastroForm(forms. ModelForm):
     password=forms.CharField(widget=forms.PasswordInput,label='Senha')
 
     confirm_password= forms.CharField(widget=forms.PasswordInput,label='Confirmar senha')

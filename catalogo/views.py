@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from forms import CadastroForm, FilmeForm
+from .forms import CadastroForm, FilmeForm
 from django.contrib.auth.models import User
 from .models import Perfil, Filme
 from django.contrib.auth.forms import AuthenticationForm
@@ -60,7 +60,7 @@ def cadastro(request):
                 user.save()
                 perfil.save()
                 messages.success(request, 'Cadastro realizado com sucesso!')
-                return redirect('login_view')
+                return redirect('login')
             else:
                 messages.error(request, 'As senhas não conferem!')
         else:
