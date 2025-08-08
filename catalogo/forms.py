@@ -11,7 +11,7 @@ class CadastroForm(forms. ModelForm):
     tipo_usuario= forms.ChoiceField(choices=TIPOS_USUARIO, label='tipo de usuario', widget= forms.Select(attrs={'class':'form-select'}))
     
 
-    class meta:
+    class Meta:
         model=User
         fields=['username','email']
         widget={
