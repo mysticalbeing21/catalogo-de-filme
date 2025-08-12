@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from .forms import CadastroForm, FilmeForm
@@ -64,12 +64,21 @@ def adicionar_filme(request):
     
     context = {'form': form}
     return render(request, 'catalogo/adicionarFilme.html', context)
+@login_required
 def editar_filme(request):
-     if request.method != 'POST':
-        form = FilmeForm()
+    objeto= get_object_or_404(Filme)
+
+    if request.method=='POST':
+        form= FilmeForm(request.POST, instance= objeto)
         if form.is_valid():
             form.save()
-            return redirect('adicionar_filme')
+            return redirect('sucesso')
+        else:
+            form= FilmeForm(instance=object)
+        return render(request, 'catalogo/adicionarFilme.html')
+def pagina_sucesso():
+    return
+
    
 
 def excluir_filme():
