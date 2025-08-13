@@ -66,20 +66,21 @@ def adicionar_filme(request):
     return render(request, 'catalogo/adicionarFilme.html', context)
 @login_required
 def editar_filme(request):
-    objeto= get_object_or_404(Filme)
-
-    if request.method=='POST':
-        form= FilmeForm(request.POST, instance= objeto)
+    filme = get_object_or_404(Filme)
+    if request.method == 'POST':
+        form = FilmeForm(request.POST, instance=filme)
         if form.is_valid():
             form.save()
-            return redirect('sucesso')
-        else:
-            form= FilmeForm(instance=object)
-        return render(request, 'catalogo/adicionarFilme.html')
-def pagina_sucesso():
-    return
+            return redirect('ver_filmes')
+    else:
+        form = FilmeForm(instance=filme)
+    return render(request, 'catalogo/editar_filme.html', {'form': form})
 
-   
+def excluir(request):
+    filme = get_object_or_404(Filme)
+    if request.method == 'POST':
+        filme.delete()
+        return redirect('ver_filmes')
+    return render(request, 'catalogo/excluir_filme.html', {'filme': filme})
 
-def excluir_filme():
-    return
+

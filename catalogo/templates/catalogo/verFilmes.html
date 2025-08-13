@@ -6,6 +6,8 @@
 {% block content %}
 <h1 style="text-align: center;">Ver Filmes</h1>
 <div class="container mt-5">
+
+   
     <table class="table table-striped">
         <thead>
             <tr>
@@ -16,7 +18,7 @@
                 <th>Diretor</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             {% for filme in filmes %}
             <tr>
                 <td>{{ filme.titulo }}</td>
