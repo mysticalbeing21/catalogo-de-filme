@@ -74,13 +74,13 @@ def editar_filme(request):
             return redirect('ver_filmes')
     else:
         form = FilmeForm(instance=filme)
-    return render(request, 'catalogo/editar_filme.html', {'form': form})
+    return render(request, 'catalogo/editarFilme.html', {'form': form})
 
 def excluir(request):
     filme = get_object_or_404(Filme)
     if request.method == 'POST':
         filme.delete()
         return redirect('ver_filmes')
-    return render(request, 'catalogo/excluir_filme.html', {'filme': filme})
+    return render(request, 'catalogo/excluirFilme.html', {'filme': filme})
 
 
