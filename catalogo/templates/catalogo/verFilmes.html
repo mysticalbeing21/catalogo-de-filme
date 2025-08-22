@@ -20,17 +20,19 @@
         </thead>
         <tbody> 
             {% for filme in filmes %}
-            <tr>
-                <td>{{ filme.titulo }}</td>
-                <td>{{ filme.get_genero_display }}</td>
-                <td>{{ filme.ano_lancamento }}</td>
-                <td>{{ filme.descricao }}</td>
-                <td>{{ filme.diretor }}</td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5" class="text-center">Nenhum filme encontrado.</td>
-            </tr>
+            <div id="filme-{{filme.id}}">
+                <tr>
+                    <td>{{ filme.titulo }}</td>
+                    <td>{{ filme.get_genero_display }}</td>
+                    <td>{{ filme.ano_lancamento }}</td>
+                    <td>{{ filme.descricao }}</td>
+                    <td>{{ filme.diretor }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">Nenhum filme encontrado.</td>
+                </tr>
+            </div>
             {% endfor %}
         </tbody>
     </table>

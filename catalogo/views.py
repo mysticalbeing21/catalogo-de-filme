@@ -64,14 +64,14 @@ def adicionar_filme(request):
     
     context = {'form': form}
     return render(request, 'catalogo/adicionarFilme.html', context)
-@login_required
-def editar_filme(request):
-    filme = get_object_or_404(Filme)
+
+def editar_filme(request, filme_id):
+    filme = get_object_or_404(Filme, id=filme_id)
     if request.method == 'POST':
         form = FilmeForm(request.POST, instance=filme)
         if form.is_valid():
             form.save()
-            return redirect('ver_filmes')
+            return redirect('verFilmes', filme_id=filme.id)
     else:
         form = FilmeForm(instance=filme)
     return render(request, 'catalogo/editarFilme.html', {'form': form})

@@ -10,7 +10,7 @@ urlpatterns = [
     path('cadastro/', cadastro, name='cadastro'),
     path('ver_filmes/', ver_filmes, name='ver_filmes'),
     path('adicionar_filme/', adicionar_filme, name='adicionar_filme'),
-    path('editar_filme/', editar_filme, name='editar_filme'),
+    path('filme/<int:filme_id>/editar_filme/', editar_filme, name='editar_filme'),
     path('excluir_filme/', excluir, name='excluir'),
     
 ]
